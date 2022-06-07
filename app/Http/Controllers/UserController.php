@@ -7,7 +7,6 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-
     public function signUp(Request $request, $user_type_id){
         $user = [];
         $user["name"] = $request->name;
