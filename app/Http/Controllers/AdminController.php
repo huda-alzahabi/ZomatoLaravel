@@ -18,5 +18,13 @@ class AdminController extends Controller{
             "status" => "Success"
         ], 200);
     }
+       public function getAllRestos(){
+           $restos = Restaurant::all();
+
+            return response()->json([
+                "status" => "Success",
+                "restos" => $restos
+            ], 200);
+    }
 
 }

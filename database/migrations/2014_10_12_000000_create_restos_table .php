@@ -16,7 +16,9 @@ class CreateRestosTable extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->unique();
+            $table->string('description');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 

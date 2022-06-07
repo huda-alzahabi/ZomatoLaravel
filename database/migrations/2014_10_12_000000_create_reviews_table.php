@@ -20,6 +20,8 @@ class CreateReviewsTable extends Migration
             $table->integer('user_id');
             $table->integer('restaurant_id');
             $table->integer('status');
+            $table->rememberToken();
+            $table->timestamps();
 
         });
     }
