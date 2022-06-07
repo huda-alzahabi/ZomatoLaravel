@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Restaurant;
+use App\Models\User;
 
 class AdminController extends Controller{
 
@@ -18,12 +19,21 @@ class AdminController extends Controller{
             "status" => "Success"
         ], 200);
     }
-       public function getAllRestos(){
+
+    public function getAllRestos(){
            $restos = Restaurant::all();
 
             return response()->json([
                 "status" => "Success",
                 "restos" => $restos
+            ], 200);
+    }
+    public function getAllUsers(){
+           $users = User::all();
+
+            return response()->json([
+                "status" => "Success",
+                "users" => $users
             ], 200);
     }
 
