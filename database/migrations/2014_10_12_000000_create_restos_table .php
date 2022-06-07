@@ -17,8 +17,6 @@ class CreateRestosTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->unique();
-            $table->rememberToken();
-            $table->timestamps();
         });
     }
 

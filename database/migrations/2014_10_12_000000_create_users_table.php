@@ -20,8 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('usertype_id');
             $table->integer('restaurant_id');
-            $table->rememberToken();
-            $table->timestamps();
+
         });
     }
 
