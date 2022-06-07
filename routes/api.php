@@ -10,3 +10,4 @@ Route::post('/register/{usertype_id}', [UserController::class, 'signUp']);
 Route::post('/add_resto', [AdminController::class, 'addResto']);
 Route::get('/restaurants', [AdminController::class, 'getAllRestos']);
 Route::get('/users', [AdminController::class, 'getAllUsers']);
+Route::post('/reviews', [UserController::class, 'submitReviews']);
