@@ -7,7 +7,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 
 Route::post('/register/{usertype_id}', [UserController::class, 'signUp']);
+Route::get('/users', [AdminController::class, 'getAllUsers']);
+
 Route::post('/add_resto', [AdminController::class, 'addResto']);
 Route::get('/restaurants', [AdminController::class, 'getAllRestos']);
-Route::get('/users', [AdminController::class, 'getAllUsers']);
-Route::post('/reviews', [UserController::class, 'submitReviews']);
+
+Route::post('/submit_reviews', [UserController::class, 'submitReviews']);
+Route::get('/reviews', [AdminController::class, 'getAllReviews']);
+

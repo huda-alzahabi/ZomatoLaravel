@@ -39,6 +39,13 @@ class AdminController extends Controller{
             ], 200);
     }
 
+    public function getAllReviews(){
+           $reviews = Review::all();
 
+            return response()->json([
+                "status" => "Success",
+                "users" => $reviews
+            ], 200);
+    }
 
 }
