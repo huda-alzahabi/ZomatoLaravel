@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Restaurant;
 
-class RestoController extends Controller{
-
+class AdminController extends Controller{
 
     public function addResto(Request $request){
         $resto = new Restaurant;
