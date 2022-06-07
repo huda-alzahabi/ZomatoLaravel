@@ -13,6 +13,8 @@ class UserController extends Controller
         $user["email"] = $request->email;
         $user["password"] = $request->password;
         $user["user_type_id"] = $user_type_id;
+        $user["restaurant_id"] =0;
+
 
         return response()->json([
             "status" => "Success",
