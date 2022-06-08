@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Review;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -12,7 +13,7 @@ class UserController extends Controller
         $user = new User;
         $user["name"] = $request->name;
         $user["email"] = $request->email;
-        $user["password"] = $request->password;
+        $user["password"] = Hash::make($request->password);
         $user["usertype_id"] = $usertype_id;
         $user["restaurant_id"] =0;
         $user->save();
@@ -24,15 +25,11 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
-       $login_email= (User::select('id')
-        ->where('email', $request->email))->get();
-       $login_pass= (User::select('id')
-        ->where('password', $request->password))->get();
-
-        if ($login_email==$login_pass){
+       $user = User::where("email",$request->email)->first();
+    if (Hash::check($request->password, $user->password)) {
             return response()->json([
                 "status" => "Success",
-                "results" => $login_email
+                "results" => "$user->name Logged in"
             ], 200);
         }
 
