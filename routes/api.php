@@ -5,10 +5,21 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\JWTController;
 
-Route::post('/register/{usertype_id}', [UserController::class, 'signUp']);
-Route::post('/login', [UserController::class, 'login']);
-Route::post('/edit_profile/{id}', [UserController::class, 'editProfile']);
+
+Route::group(['middleware' => 'api'], function($router) {
+    Route::post('/register', [JWTController::class, 'register']);
+    Route::post('/login', [JWTController::class, 'login']);
+    Route::post('/logout', [JWTController::class, 'logout']);
+    Route::post('/refresh', [JWTController::class, 'refresh']);
+    Route::post('/profile', [JWTController::class, 'profile']);
+});
+
+
+// Route::post('/register/{usertype_id}', [UserController::class, 'signUp']);
+// Route::post('/login', [UserController::class, 'login']);
+// Route::post('/edit_profile/{id}', [UserController::class, 'editProfile']);
 
 
 Route::get('/users', [AdminController::class, 'getAllUsers']);
