@@ -14,7 +14,7 @@ Route::post('/edit_profile/{id}', [UserController::class, 'editProfile']);
 Route::get('/users', [AdminController::class, 'getAllUsers']);
 
 Route::post('/add_resto', [AdminController::class, 'addResto']);
-Route::get('/restaurants', [AdminController::class, 'getAllRestos']);
+Route::get('/restaurants/{id?}', [AdminController::class, 'getAllRestos']);
 
 Route::post('/submit_reviews', [UserController::class, 'submitReviews']);
 Route::get('/reviews', [AdminController::class, 'getAllReviews']);
