@@ -22,6 +22,24 @@ class UserController extends Controller
             "users" => $user
         ], 200);
     }
+    public function login(Request $request){
+       $login_email= (User::select('id')
+        ->where('email', $request->email))->get();
+       $login_pass= (User::select('id')
+        ->where('password', $request->password))->get();
+
+        if ($login_email==$login_pass){
+            return response()->json([
+                "status" => "Success",
+                "results" => $login_email
+            ], 200);
+        }
+
+        return response()->json([
+                "status" => "Error",
+                "results" => "Incorrect Email or Password"
+        ], 200);
+}
 
     public function submitReviews(Request $request){
         $review = new Review;
