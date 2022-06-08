@@ -21,13 +21,17 @@ class AdminController extends Controller{
         ], 200);
     }
 
-    public function getAllRestos(){
-           $restos = Restaurant::all();
-
-            return response()->json([
-                "status" => "Success",
-                "restos" => $restos
-            ], 200);
+    public function getAllRestos($id = null){
+        if($id != null){
+            $restos = Restaurant::find($id);
+            //$restos = $restos? $restos->name : '';
+        }else{
+            $restos = Restaurant::all();
+        }
+        return response()->json([
+            "status" => "Success",
+            "restos" => $restos
+        ], 200);
     }
 
     public function getAllUsers(){
