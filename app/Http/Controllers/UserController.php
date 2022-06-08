@@ -22,6 +22,7 @@ class UserController extends Controller
             "users" => $user
         ], 200);
     }
+
     public function login(Request $request){
        $login_email= (User::select('id')
         ->where('email', $request->email))->get();
@@ -39,8 +40,16 @@ class UserController extends Controller
                 "status" => "Error",
                 "results" => "Incorrect Email or Password"
         ], 200);
-}
+    }
 
+    public function editProfile(Request $request,$user_id){
+       $user = User::find($user_id);
+       if($request->name) $user["name"] = $request->name;
+       if($request->email) $user["email"] = $request->email;
+       if($request->password) $user["password"] = $request->password;
+       $user->save();
+
+    }
     public function submitReviews(Request $request){
         $review = new Review;
         $review["stars"] = $request->stars;

@@ -8,6 +8,8 @@ use App\Http\Controllers\AdminController;
 
 Route::post('/register/{usertype_id}', [UserController::class, 'signUp']);
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/edit_profile/{id}', [UserController::class, 'editProfile']);
+
 
 Route::get('/users', [AdminController::class, 'getAllUsers']);
 
