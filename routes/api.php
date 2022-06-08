@@ -3,8 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Admin\AdminController;
 
 Route::post('/register/{usertype_id}', [UserController::class, 'signUp']);
 Route::post('/login', [UserController::class, 'login']);

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Review;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
-{
+
+class UserController extends Controllers\Controller{
     public function signUp(Request $request, $usertype_id){
         $user = new User;
         $user["name"] = $request->name;
