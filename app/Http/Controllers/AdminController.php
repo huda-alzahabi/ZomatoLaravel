@@ -48,4 +48,9 @@ class AdminController extends Controller{
             ], 200);
     }
 
+    public function rejectReview($review_id){
+        $rejectReview = Review::find($review_id);
+        $rejectReview -> status = -1;
+        $rejectReview -> save();
+    }
 }
